@@ -1,0 +1,73 @@
+{% load staticfiles %}
+{% load blog_tags %}
+<!DOCTYPE html>
+<html>
+
+	<head>
+		<meta charset="UTF-8">
+		<title>曹周祥的个人博客</title>
+
+		<!-- css -->
+		<link rel="stylesheet" href="{% static 'blog/plugin/bootstrap/css/bootstrap.min.css' %}" />
+		<link rel="stylesheet" type="text/css" href="{% static 'blog/css/common.css' %}" />
+		<link rel="shortcut icon" href="{% static 'blog/logo.ico' %}" />
+		<link rel="stylesheet" href="{% static 'blog/css/highlights/github.css' %}">
+		<script src="{% static 'blog/plugin/jquery.min.js' %}"></script>
+		<script src="{% static 'blog/plugin/bootstrap/js/bootstrap.min.js' %}"></script>
+	</head>
+
+	<body>
+		<div class="w_header">
+			<div class="container">
+				<div class="w_header_top">
+					<a href="{% url 'blog:index' %}" class="w_logo"></a>
+					<span class="w_header_nav">
+					<ul>
+						<li><a href="{% url 'blog:index' %}" class="active">首页</a></li>
+						<li><a href="#">学习</a></li>
+						<li><a href="#">生活</a></li>
+						<li><a href="#">娱乐</a></li>
+						<li><a href="#">留言</a></li>
+					</ul>
+					</span>
+					<div class="w_search">
+						<div class="w_searchbox">
+							<input type="text" placeholder="search" />
+							<button>搜索</button>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+		<div class="w_container">
+			{% block main %}
+            {% endblock main %}
+		</div>
+		<div class="w_foot">
+			<div class="w_foot_copyright">Copyright &copy; 2018-2019, www.caozhouxiang.com. All Rights Reserved. <span>|</span>
+				<a target="_blank" href="http://www.miitbeian.gov.cn/" rel="nofollow">皖ICP备18004363号</a>
+			</div>
+		</div>
+	</body>
+
+	<script type="text/javascript">
+		var $backToTopEle = $('<a href="javascript:void(0)" class="Hui-iconfont toTop" title="返回顶部" alt="返回顶部" style="display:none">^</a>').appendTo($("body")).click(function() {
+			$("html, body").animate({ scrollTop: 0 }, 120);
+		});
+		var backToTopFun = function() {
+			var st = $(document).scrollTop(),
+				winh = $(window).height();
+			(st > 0) ? $backToTopEle.show(): $backToTopEle.hide();
+			/*IE6下的定位*/
+			if(!window.XMLHttpRequest) {
+				$backToTopEle.css("top", st + winh - 166);
+			}
+		};
+
+		$(function() {
+			$(window).on("scroll", backToTopFun);
+			backToTopFun();
+		});
+	</script>
+
+</html>
